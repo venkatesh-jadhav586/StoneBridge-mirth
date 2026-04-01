@@ -282,7 +282,7 @@ function render(allRows, monthIdx) {
     const joined = cells.join('|');
 
     // Maintenance header: first col likely "flat" or "unit" or "s.no" etc, has "monthly maint" or "deposit"
-    if (maintHeaderRow < 0 && (joined.includes('monthly maint') || (joined.includes('deposit') && joined.includes('maint')))) {
+    if (maintHeaderRow < 0 && joined.includes('maint') && (joined.includes('deposit') )) {
       maintHeaderRow = i;
     }
     // Expense header: has "expense amount" column
