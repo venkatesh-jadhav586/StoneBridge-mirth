@@ -215,8 +215,8 @@ const COLORS = ['#e8c96b','#6bcce8','#e86b8a','#6be8a7','#c86be8','#e8976b','#6b
 // ── ADD NEW MONTHS HERE ───────────────────────────────────────────────────────
 const MONTHS = [
   { label: "January 2026",  short: "Jan 2026", gid: "0" },
-  { label: "February 2026", short: "Feb 2026", gid: "1451878896" },
-  { label: "March 2026",    short: "Mar 2026", gid: "1873129385" }
+  { label: "February 2026", short: "Feb 2026", gid: "773416530" },
+  { label: "March 2026",    short: "Mar 2026", gid: "1284195684" }
 ];
 
 // ── HELPERS ───────────────────────────────────────────────────────────────────
@@ -239,7 +239,8 @@ function parseCSV(text) {
 }
 
 function fmt(n) {
-  if (n === null || n === undefined || isNaN(n) || n === 0) return '—';
+  if (n === null || n === undefined || isNaN(n)) return '—';
+  if (n === 0) return 'Zero';
   return '₹' + Number(n).toLocaleString('en-IN');
 }
 
@@ -303,31 +304,36 @@ function render(allRows, monthIdx) {
   const maintRows = allRows.slice(maintHeaderRow + 1, maintEnd).filter(r => r.some(c => c.trim() !== ''));
 
   // Find useful columns — skip columns that are empty, "d.o.p", "total", "opening/closing balance", "expense"
-  const skipPatterns = ['d.o.p','dop','opening balance','closing balance','expense','remarks','remark'];
+  const skipPatterns = ['d.o.p','dop','opening balance','closing balance','expense amount'];
+  const remarkPatterns = ['remark','paid','status'];
   const maintCols = [];
+  const remarkCols = [];
   let maintTotalIdx = -1;
 
   maintHeaders.forEach((h, i) => {
     const hn = norm(h);
-    if (i === 0) return; // first col = label
+    if (i === 0) return;
     if (hn === '') return;
     if (skipPatterns.some(p => hn.includes(p))) return;
     if (hn.includes('total') || hn.includes('sum')) { maintTotalIdx = i; return; }
+    if (remarkPatterns.some(p => hn.includes(p))) { remarkCols.push({ idx: i, name: h }); return; }
     maintCols.push({ idx: i, name: h });
   });
 
   const maintItems = maintRows.map(row => {
     const label = row[0] ? row[0].trim() : '';
     if (!label) return null;
-    const amts = maintCols.map(c => ({ name: c.name, amt: parseAmt(row[c.idx] || '') }));
-    const sub  = maintTotalIdx >= 0 ? parseAmt(row[maintTotalIdx] || '') : amts.reduce((a,e) => a+e.amt, 0);
-    return { label, amts, sub };
+    const amts    = maintCols.map(c => ({ name: c.name, amt: parseAmt(row[c.idx] || '') }));
+    const remarks = remarkCols.map(c => ({ name: c.name, val: (row[c.idx] || '').trim() }));
+    const sub     = maintTotalIdx >= 0 ? parseAmt(row[maintTotalIdx] || '') : amts.reduce((a,e) => a+e.amt, 0);
+    return { label, amts, remarks, sub };
   }).filter(Boolean);
 
   if (maintItems.length) {
     document.getElementById('maint-thead').innerHTML = `<tr>
       <th>${maintHeaders[0] || 'Flat / Unit'}</th>
       ${maintCols.map(c => `<th>${c.name}</th>`).join('')}
+      ${remarkCols.map(c => `<th>${c.name}</th>`).join('')}
       <th>Total</th>
     </tr>`;
 
@@ -335,6 +341,7 @@ function render(allRows, monthIdx) {
       <tr>
         <td class="td-label">${d.label}</td>
         ${d.amts.map(e => `<td class="td-num">${fmt(e.amt)}</td>`).join('')}
+        ${d.remarks.map(r => `<td class="td-remark" style="color:${norm(r.val).includes('paid') ? 'var(--green)' : norm(r.val).includes('pend') ? '#e8976b' : 'var(--muted)'}">${r.val || '—'}</td>`).join('')}
         <td class="td-total">${fmt(d.sub)}</td>
       </tr>
     `).join('');
@@ -345,6 +352,7 @@ function render(allRows, monthIdx) {
       <tr>
         <td>Total Collected</td>
         ${colTotals.map(t => `<td>${fmt(t)}</td>`).join('')}
+        ${remarkCols.map(() => '<td></td>').join('')}
         <td>${fmt(grandMaint)}</td>
       </tr>`;
 
