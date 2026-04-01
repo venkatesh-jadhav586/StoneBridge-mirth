@@ -353,7 +353,9 @@ function render(allRows, monthIdx) {
         <td class="td-label">${d.label}</td>
         ${d.amts.map(e => `<td class="td-num">${fmt(e.amt)}</td>`).join('')}
         ${d.remarks.map(r => `<td class="td-remark" style="color:${norm(r.val).includes('paid') ? 'var(--green)' : norm(r.val).includes('pend') ? '#e8976b' : 'var(--muted)'}">${r.val || '—'}</td>`).join('')}
-        <td class="td-total" style="${d.isPending ? 'color:#e8976b' : ''}">${d.isPending ? '<span style="color:#e8976b;font-size:11px">PENDING</span>' : fmt(d.sub)}</td>
+<td class="td-total" style="${d.isPending ? 'color:#e8976b' : ''}">
+${d.isPending ? `<span style="color:#e8976b;font-size:11px">PENDING (${fmt(d.rawSub)})</span>` : fmt(d.sub)}
+</td>
       </tr>
     `).join('');
 
