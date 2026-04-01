@@ -304,7 +304,8 @@ function render(allRows, monthIdx) {
   const maintRows = allRows.slice(maintHeaderRow + 1, maintEnd).filter(r => r.some(c => c.trim() !== ''));
 
   // Find useful columns — skip d.o.p, column 8, opening/closing balance, expense amount
-  const skipPatterns = ['d.o.p','dop','opening balance','closing balance','expense '];
+  const skipPatterns = ['d.o.p','dop','opening balance','closing balance','expense ','column 8',
+'column8'];
   const remarkPatterns = ['remark','status'];
   const maintCols = [];
   const remarkCols = [];
@@ -315,7 +316,7 @@ function render(allRows, monthIdx) {
     if (i === 0) return;
     if (hn === '') return;
     if (skipPatterns.some(p => hn.includes(p))) return;
-  if (hn.includes('total') || hn.includes('sum') || hn.includes('paid')) { maintTotalIdx = i; return; }
+  if (hn.startsWith('total')) { maintTotalIdx = i; return; }
     if (remarkPatterns.some(p => hn.includes(p))) { remarkCols.push({ idx: i, name: h }); return; }
     maintCols.push({ idx: i, name: h });
   });
