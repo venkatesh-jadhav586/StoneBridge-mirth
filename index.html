@@ -304,7 +304,7 @@ function render(allRows, monthIdx) {
   const maintRows = allRows.slice(maintHeaderRow + 1, maintEnd).filter(r => r.some(c => c.trim() !== ''));
 
   // Find useful columns — skip d.o.p, column 8, opening/closing balance, expense amount
-  const skipPatterns = ['d.o.p','dop','opening balance','closing balance','expense amount','column 8','column8'];
+  const skipPatterns = ['d.o.p','dop','opening balance','closing balance','expense amount'];
   const remarkPatterns = ['remark','status'];
   const maintCols = [];
   const remarkCols = [];
