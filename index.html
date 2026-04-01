@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -20,8 +21,6 @@
     background-size:40px 40px; opacity:0.2; pointer-events:none; z-index:0;
   }
   .wrap { position:relative; z-index:1; max-width:1100px; margin:0 auto; padding:0 24px; }
-
-  /* HEADER */
   header { padding:40px 0 28px; border-bottom:1px solid var(--border); margin-bottom:32px; }
   .header-inner { display:flex; justify-content:space-between; align-items:flex-end; gap:20px; flex-wrap:wrap; }
   .logo-area { display:flex; align-items:center; gap:14px; }
@@ -34,8 +33,6 @@
   .btn-p:hover { background:#f0d47a; box-shadow:0 0 18px rgba(232,201,107,0.4); }
   .btn-g { background:transparent; color:var(--muted); border:1px solid var(--border); }
   .btn-g:hover { color:var(--text); border-color:var(--muted); }
-
-  /* MONTH SELECTOR */
   .month-bar { display:flex; align-items:center; gap:14px; margin-bottom:28px; flex-wrap:wrap; }
   .month-label { font-size:11px; font-weight:500; text-transform:uppercase; letter-spacing:1.5px; color:var(--muted); font-family:'DM Mono',monospace; }
   .month-select {
@@ -43,31 +40,22 @@
     color:var(--text); font-family:'Outfit',sans-serif; font-size:14px; font-weight:500;
     padding:9px 34px 9px 14px; cursor:pointer; appearance:none; -webkit-appearance:none;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238b949e' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-    background-repeat:no-repeat; background-position:right 11px center; min-width:175px;
-    transition:border-color 0.2s;
+    background-repeat:no-repeat; background-position:right 11px center; min-width:175px; transition:border-color 0.2s;
   }
   .month-select:focus { outline:none; border-color:var(--accent); }
-
-  /* STATUS */
   .status-bar { display:flex; gap:8px; align-items:center; font-family:'DM Mono',monospace; font-size:12px; color:var(--muted); margin-bottom:28px; }
   .dot { width:6px; height:6px; border-radius:50%; background:var(--green); box-shadow:0 0 6px var(--green); animation:pulse 2s infinite; }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
-
-  /* BALANCE CARDS */
   .balance-cards { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:36px; }
   .bal-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--r); padding:22px 26px; position:relative; overflow:hidden; }
   .bal-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:var(--card-color, var(--accent)); }
   .bal-label { font-size:11px; font-weight:500; text-transform:uppercase; letter-spacing:1.5px; color:var(--muted); margin-bottom:10px; }
   .bal-value { font-family:'DM Serif Display',serif; font-size:34px; line-height:1; }
   .bal-sub { font-size:12px; color:var(--muted); font-family:'DM Mono',monospace; margin-top:6px; }
-
-  /* SECTION TITLE */
   .sec-head { display:flex; align-items:center; gap:10px; margin-bottom:16px; margin-top:36px; }
   .sec-title { font-family:'DM Serif Display',serif; font-size:19px; }
   .tag { font-family:'DM Mono',monospace; font-size:10px; font-weight:500; padding:3px 8px; border-radius:4px; background:var(--surface2); border:1px solid var(--border); color:var(--accent); letter-spacing:1px; text-transform:uppercase; }
   .tag2 { color:var(--accent2); }
-
-  /* TABLE */
   .tbl-wrap { background:var(--surface); border:1px solid var(--border); border-radius:var(--r); overflow:hidden; margin-bottom:36px; }
   .tbl-scroll { overflow-x:auto; }
   table { width:100%; border-collapse:collapse; }
@@ -83,8 +71,6 @@
   tfoot td { padding:13px 18px; font-weight:600; font-family:'DM Mono',monospace; font-size:13px; background:var(--surface2); border-top:2px solid var(--border); color:var(--accent); }
   .exp-head th { background:rgba(107,204,232,0.08) !important; color:var(--accent2) !important; }
   .exp-foot td { color:var(--accent2) !important; }
-
-  /* BAR CHART */
   .chart-box { background:var(--surface); border:1px solid var(--border); border-radius:var(--r); padding:24px; margin-bottom:36px; }
   .chart-bars { display:flex; align-items:flex-end; gap:8px; height:150px; margin-top:20px; padding-bottom:8px; border-bottom:1px solid var(--border); }
   .bar-g { flex:1; display:flex; flex-direction:column; align-items:center; gap:5px; height:100%; justify-content:flex-end; }
@@ -92,21 +78,15 @@
   .bar:hover { opacity:0.75; }
   .bar:hover::after { content:attr(data-tip); position:absolute; bottom:calc(100% + 6px); left:50%; transform:translateX(-50%); background:var(--surface2); border:1px solid var(--border); color:var(--text); font-family:'DM Mono',monospace; font-size:11px; padding:4px 8px; border-radius:6px; white-space:nowrap; z-index:10; }
   .bar-lbl { font-size:10px; color:var(--muted); font-family:'DM Mono',monospace; text-align:center; }
-
-  /* LOADER */
   .loader { text-align:center; padding:50px; color:var(--muted); font-family:'DM Mono',monospace; font-size:13px; }
   .spinner { width:30px; height:30px; border:2px solid var(--border); border-top-color:var(--accent); border-radius:50%; animation:spin 0.8s linear infinite; margin:0 auto 14px; }
   @keyframes spin { to { transform:rotate(360deg); } }
-
-  /* LINK BANNER */
   .link-banner { background:linear-gradient(135deg,rgba(232,201,107,0.06),rgba(107,204,232,0.06)); border:1px solid var(--border); border-radius:var(--r); padding:22px 26px; display:flex; justify-content:space-between; align-items:center; gap:18px; margin-bottom:40px; flex-wrap:wrap; }
   .link-left { display:flex; align-items:center; gap:12px; }
   .link-icon { font-size:26px; }
   .link-title { font-size:15px; font-weight:500; }
   .link-sub { font-size:12px; color:var(--muted); margin-top:2px; font-family:'DM Mono',monospace; }
-
   footer { border-top:1px solid var(--border); padding:28px 0; color:var(--muted); font-size:12px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; }
-
   @media(max-width:600px) {
     .balance-cards { grid-template-columns:1fr; }
     .header-inner { flex-direction:column; align-items:flex-start; }
@@ -116,7 +96,6 @@
 <body>
 <div class="wrap">
 
-  <!-- HEADER -->
   <header>
     <div class="header-inner">
       <div class="logo-area">
@@ -130,13 +109,11 @@
     </div>
   </header>
 
-  <!-- MONTH SELECTOR -->
   <div class="month-bar">
     <span class="month-label">📅 Select Month</span>
     <select class="month-select" id="month-select" onchange="switchMonth()"></select>
   </div>
 
-  <!-- STATUS -->
   <div class="status-bar">
     <div class="dot"></div>
     <span>Live data from Google Sheets</span>
@@ -144,42 +121,34 @@
     <span id="last-updated">Loading…</span>
   </div>
 
-  <!-- BALANCE CARDS -->
   <div class="balance-cards" id="balance-cards">
-    <div class="loader" style="grid-column:1/-1"><div class="spinner"></div>Fetching data…</div>
+    <div class="loader" style="grid-column:1/-1"><div class="spinner"></div>Fetching…</div>
   </div>
 
-  <!-- MAINTENANCE TABLE -->
   <div class="sec-head">
     <div class="sec-title">Maintenance Records</div>
     <span class="tag" id="maint-tag">—</span>
   </div>
-  <div class="tbl-wrap">
-    <div class="tbl-scroll">
-      <table>
-        <thead id="maint-thead"><tr><th colspan="10"><div class="spinner" style="margin:10px auto"></div></th></tr></thead>
-        <tbody id="maint-tbody"></tbody>
-        <tfoot id="maint-tfoot"></tfoot>
-      </table>
-    </div>
-  </div>
+  <div class="tbl-wrap"><div class="tbl-scroll">
+    <table>
+      <thead id="maint-thead"><tr><th colspan="10"><div class="spinner" style="margin:10px auto"></div></th></tr></thead>
+      <tbody id="maint-tbody"></tbody>
+      <tfoot id="maint-tfoot"></tfoot>
+    </table>
+  </div></div>
 
-  <!-- EXPENSE TABLE -->
   <div class="sec-head">
     <div class="sec-title">Expense Breakdown</div>
     <span class="tag tag2" id="exp-tag">—</span>
   </div>
-  <div class="tbl-wrap">
-    <div class="tbl-scroll">
-      <table>
-        <thead id="exp-thead" class="exp-head"><tr><th colspan="3"><div class="spinner" style="margin:10px auto"></div></th></tr></thead>
-        <tbody id="exp-tbody"></tbody>
-        <tfoot id="exp-tfoot" class="exp-foot"></tfoot>
-      </table>
-    </div>
-  </div>
+  <div class="tbl-wrap"><div class="tbl-scroll">
+    <table>
+      <thead id="exp-thead" class="exp-head"><tr><th colspan="4"><div class="spinner" style="margin:10px auto"></div></th></tr></thead>
+      <tbody id="exp-tbody"></tbody>
+      <tfoot id="exp-tfoot" class="exp-foot"></tfoot>
+    </table>
+  </div></div>
 
-  <!-- BAR CHART -->
   <div class="sec-head">
     <div class="sec-title">Maintenance Chart</div>
     <span class="tag" id="chart-tag">—</span>
@@ -190,7 +159,6 @@
     </div>
   </div>
 
-  <!-- LINK BANNER -->
   <div class="link-banner">
     <div class="link-left">
       <div class="link-icon">📋</div>
@@ -206,27 +174,22 @@
     <span>Stone Bridge Mirth Apartments · Maintenance Dashboard</span>
     <span style="font-family:'DM Mono',monospace;">Updated <span id="footer-date"></span></span>
   </footer>
-
 </div>
+
 <script>
 const SHEET_ID = '1xMVeCAiWuDi3SZBxU4xiD-rW68ygJXXqepGbDPp8PXs';
-const COLORS = ['#e8c96b','#6bcce8','#e86b8a','#6be8a7','#c86be8','#e8976b','#6b8ae8','#e8e86b'];
+const COLORS   = ['#e8c96b','#6bcce8','#e86b8a','#6be8a7','#c86be8','#e8976b','#6b8ae8','#e8e86b'];
 
-// ── ADD NEW MONTHS HERE ───────────────────────────────────────────────────────
 const MONTHS = [
-  { label: "January 2026",  short: "Jan 2026", gid: "0" },
-  { label: "February 2026", short: "Feb 2026", gid: "773416530" },
-  { label: "March 2026",    short: "Mar 2026", gid: "1284195684" }
+  { label:"January 2026",  short:"Jan 2026", gid:"0" },
+  { label:"February 2026", short:"Feb 2026", gid:"773416530" },
+  { label:"March 2026",    short:"Mar 2026", gid:"1284195684" }
 ];
 
-// ── HELPERS ───────────────────────────────────────────────────────────────────
-
-// Robust CSV parser — handles quoted fields with commas inside
+// Robust CSV parser
 function parseCSV(text) {
-  const lines = text.trim().split('\n');
-  return lines.map(line => {
-    const cols = [];
-    let cur = '', inQ = false;
+  return text.trim().split('\n').map(line => {
+    const cols = []; let cur = '', inQ = false;
     for (let i = 0; i < line.length; i++) {
       const ch = line[i];
       if (ch === '"') { inQ = !inQ; }
@@ -244,310 +207,211 @@ function fmt(n) {
   return '₹' + Number(n).toLocaleString('en-IN');
 }
 
-// Evaluates values like "529+223+200=952" → returns 952 (the result after =)
-// Also handles plain numbers like "10000" or "15,461"
+// KEY FIX: handles "3620+3120+2986" AND "529+223=952" AND plain "10000"
 function parseAmt(v) {
   if (!v || v.trim() === '') return 0;
-  v = v.trim();
-  // If contains "=" take the last part after "="
+  v = v.trim().replace(/[₹\s]/g, '');
+
+  // If has "=", take the value after last "=" (the written result)
   if (v.includes('=')) {
-    v = v.split('=').pop().trim();
+    const afterEq = v.split('=').pop().replace(/,/g, '');
+    const n = parseFloat(afterEq);
+    if (!isNaN(n)) return n;
   }
-  // Remove ₹, commas, spaces
-  v = v.replace(/[₹,\s]/g, '');
+
+  v = v.replace(/,/g, '');
+
+  // Evaluate bare arithmetic expressions like 3620+3120+2986
+  if (/^[\d+\-*/().]+$/.test(v) && /[+\-*/]/.test(v)) {
+    try {
+      const result = Function('"use strict"; return (' + v + ')')();
+      if (typeof result === 'number' && isFinite(result)) return Math.round(result * 100) / 100;
+    } catch(e) { /* fall through */ }
+  }
+
   const n = parseFloat(v);
   return isNaN(n) ? 0 : n;
 }
 
 function norm(s) { return (s || '').toLowerCase().trim(); }
 
-// ── RENDER ────────────────────────────────────────────────────────────────────
+const DOP_PATTERNS = ['d.o.p','dop','date of pay','date pay']; // kept to skip these cols
+
 function render(allRows, monthIdx) {
   const month = MONTHS[monthIdx];
+  ['maint-tag','exp-tag','chart-tag'].forEach(id => document.getElementById(id).textContent = month.short);
 
-  // Update tags
-  ['maint-tag','exp-tag','chart-tag'].forEach(id => {
-    document.getElementById(id).textContent = month.short;
-  });
-
-  // ── Find section boundaries ──────────────────────────────────────────────
-  // We scan for rows where first cell matches known section-header keywords.
-
-  let maintHeaderRow = -1;  // row index of maintenance table header
-  let expHeaderRow   = -1;  // row index of expense table header (has "Expense" + "Expense Amount")
-  let balHeaderRow   = -1;  // row index of Table1 header (has "Opening Balance" or "Closing Balance")
-
+  let maintHeaderRow = -1, expHeaderRow = -1, balHeaderRow = -1;
   allRows.forEach((row, i) => {
-    const cells = row.map(norm);
-    const joined = cells.join('|');
-
-    // Maintenance header: first col likely "flat" or "unit" or "s.no" etc, has "monthly maint" or "deposit"
-    if (maintHeaderRow < 0 && joined.includes('maint') && (joined.includes('deposit') )) {
-      maintHeaderRow = i;
-    }
-    // Expense header: has "expense amount" column
-    if (expHeaderRow < 0 && joined.includes('expense amount')) {
-      expHeaderRow = i;
-    }
-    // Balance header: has "opening balance" or "closing balance"
-    if (balHeaderRow < 0 && (joined.includes('opening balance') || joined.includes('closing balance'))) {
-      balHeaderRow = i;
-    }
+    const j = row.map(norm).join('|');
+    if (maintHeaderRow < 0 && j.includes('maint') && j.includes('deposit')) maintHeaderRow = i;
+    if (expHeaderRow   < 0 && j.includes('expense amount'))                  expHeaderRow   = i;
+    if (balHeaderRow   < 0 && (j.includes('opening balance') || j.includes('closing balance'))) balHeaderRow = i;
   });
-
-  // Fallback: if we didn't find maintenance header, treat row 0 as header
   if (maintHeaderRow < 0) maintHeaderRow = 0;
 
   // ── MAINTENANCE TABLE ─────────────────────────────────────────────────────
-  const maintEnd = expHeaderRow > 0 ? expHeaderRow : (balHeaderRow > 0 ? balHeaderRow : allRows.length);
+  const maintEnd     = expHeaderRow > 0 ? expHeaderRow : (balHeaderRow > 0 ? balHeaderRow : allRows.length);
   const maintHeaders = allRows[maintHeaderRow];
-  const maintRows = allRows.slice(maintHeaderRow + 1, maintEnd).filter(r => r.some(c => c.trim() !== ''));
+  const maintRows    = allRows.slice(maintHeaderRow + 1, maintEnd).filter(r => r.some(c => c.trim() !== ''));
 
-  // Find useful columns — skip d.o.p, column 8, opening/closing balance, expense amount
-  const skipPatterns = ['d.o.p','dop','opening balance','closing balance','expense ','column 8',
-'column8'];
-  const remarkPatterns = ['remark','status'];
-  const maintCols = [];
-  const remarkCols = [];
-  let maintTotalIdx = -1;
+  const SKIP    = ['opening balance','closing balance','expense ','column 8','column8'];
+  const REM_PAT = ['remark','status'];
+
+  const maintCols = [], remarkCols = [];
+  let maintTotalIdx = -1, remarksColIdx = -1;
 
   maintHeaders.forEach((h, i) => {
     const hn = norm(h);
-    if (i === 0) return;
-    if (hn === '') return;
-    if (skipPatterns.some(p => hn.includes(p))) return;
-  if (hn.startsWith('total')) { maintTotalIdx = i; return; }
-    if (remarkPatterns.some(p => hn.includes(p))) { remarkCols.push({ idx: i, name: h }); return; }
-    maintCols.push({ idx: i, name: h });
-  });
-
-  // Find remarks column index separately for pending check
-  let remarksColIdx = -1;
-  maintHeaders.forEach((h, i) => {
-    if (norm(h).includes('remark')) remarksColIdx = i;
+    if (i === 0 || hn === '') return;
+    if (DOP_PATTERNS.some(p => hn.includes(p)))  return; // skip D.O.P columns
+    if (SKIP.some(p => hn.includes(p)))           return;
+    if (hn.startsWith('total'))                   { maintTotalIdx = i; return; }
+    if (REM_PAT.some(p => hn.includes(p)))        { remarkCols.push({ idx:i, name:h }); if(remarksColIdx<0) remarksColIdx=i; return; }
+    maintCols.push({ idx:i, name:h });
   });
 
   const maintItems = maintRows.map(row => {
-    const label = row[0] ? row[0].trim() : '';
+    const label = (row[0] || '').trim();
     if (!label) return null;
-    const amts    = maintCols.map(c => ({ name: c.name, amt: parseAmt(row[c.idx] || '') }));
-    const remarks = remarkCols.map(c => ({ name: c.name, val: (row[c.idx] || '').trim() }));
-    const remarkVal = remarksColIdx >= 0 ? norm(row[remarksColIdx] || '') : '';
+    const amts    = maintCols.map(c => ({ name:c.name, amt:parseAmt(row[c.idx]||'') }));
+    const remarks = remarkCols.map(c => ({ name:c.name, val:(row[c.idx]||'').trim() }));
+    const remarkVal = remarksColIdx >= 0 ? norm(row[remarksColIdx]||'') : '';
     const isPending = remarkVal.includes('pend');
-    // sub = total from sheet col if exists; if pending, sub = 0 (don't count)
-    const rawSub = maintTotalIdx >= 0 ? parseAmt(row[maintTotalIdx] || '') : amts.reduce((a,e) => a+e.amt, 0);
-    const sub = isPending ? 0 : rawSub;
-    return { label, amts, remarks, sub, isPending, rawSub };
+    const rawSub  = maintTotalIdx >= 0 ? parseAmt(row[maintTotalIdx]||'') : amts.reduce((a,e)=>a+e.amt,0);
+    return { label, amts, remarks, sub: isPending ? 0 : rawSub, isPending, rawSub };
   }).filter(Boolean);
 
   if (maintItems.length) {
     document.getElementById('maint-thead').innerHTML = `<tr>
-      <th>${maintHeaders[0] || 'Flat / Unit'}</th>
-      ${maintCols.map(c => `<th>${c.name}</th>`).join('')}
-      ${remarkCols.map(c => `<th>${c.name}</th>`).join('')}
-      <th>Total</th>
-    </tr>`;
+      <th>${maintHeaders[0]||'Flat / Unit'}</th>
+      ${maintCols.map(c=>`<th>${c.name}</th>`).join('')}
+      ${remarkCols.map(c=>`<th>${c.name}</th>`).join('')}
+      <th>Total</th></tr>`;
 
     document.getElementById('maint-tbody').innerHTML = maintItems.map(d => `
-      <tr style="${d.isPending ? 'opacity:0.5' : ''}">
+      <tr style="${d.isPending?'opacity:0.55':''}">
         <td class="td-label">${d.label}</td>
-        ${d.amts.map(e => `<td class="td-num">${fmt(e.amt)}</td>`).join('')}
-        ${d.remarks.map(r => `<td class="td-remark" style="color:${norm(r.val).includes('paid') ? 'var(--green)' : norm(r.val).includes('pend') ? '#e8976b' : 'var(--muted)'}">${r.val || '—'}</td>`).join('')}
-<td class="td-total" style="${d.isPending ? 'color:#e8976b' : ''}">
-${d.isPending ? `<span style="color:#e8976b;font-size:11px">PENDING (${fmt(d.rawSub)})</span>` : fmt(d.sub)}
-</td>
-      </tr>
-    `).join('');
+        ${d.amts.map(e=>`<td class="td-num">${fmt(e.amt)}</td>`).join('')}
+        ${d.remarks.map(r=>`<td class="td-remark" style="color:${norm(r.val).includes('paid')?'var(--green)':norm(r.val).includes('pend')?'#e8976b':'var(--muted)'}">${r.val||'—'}</td>`).join('')}
+        <td class="td-total" style="${d.isPending?'color:#e8976b':''}">
+          ${d.isPending?`<span style="color:#e8976b;font-size:11px">PENDING (${fmt(d.rawSub)})</span>`:fmt(d.sub)}
+        </td>
+      </tr>`).join('');
 
-    // Total Collected = only paid rows
-    const colTotals  = maintCols.map(c => maintItems.filter(d => !d.isPending).reduce((a,d) => a + (d.amts.find(e=>e.name===c.name)?.amt||0), 0));
-    const grandMaint = maintItems.filter(d => !d.isPending).reduce((a,d) => a+d.sub, 0);
-    const pendingCount = maintItems.filter(d => d.isPending).length;
-    document.getElementById('maint-tfoot').innerHTML = `
-      <tr>
-        <td>Total Collected${pendingCount > 0 ? ` <span style="color:#e8976b;font-weight:400;font-size:11px">(${pendingCount} pending excluded)</span>` : ''}</td>
-        ${colTotals.map(t => `<td>${fmt(t)}</td>`).join('')}
-        ${remarkCols.map(() => '<td></td>').join('')}
-        <td>${fmt(grandMaint)}</td>
-      </tr>`;
+    const colTots   = maintCols.map(c => maintItems.filter(d=>!d.isPending).reduce((a,d)=>a+(d.amts.find(e=>e.name===c.name)?.amt||0),0));
+    const grandM    = maintItems.filter(d=>!d.isPending).reduce((a,d)=>a+d.sub,0);
+    const pendCount = maintItems.filter(d=>d.isPending).length;
+    document.getElementById('maint-tfoot').innerHTML = `<tr>
+      <td>Total Collected${pendCount>0?` <span style="color:#e8976b;font-weight:400;font-size:11px">(${pendCount} pending excluded)</span>`:''}</td>
+      ${colTots.map(t=>`<td>${fmt(t)}</td>`).join('')}
+      ${remarkCols.map(()=>'<td></td>').join('')}
+      <td>${fmt(grandM)}</td></tr>`;
 
-    // Bar chart
-    const maxVal = Math.max(...maintItems.map(d => d.sub), 1);
-    document.getElementById('chart-bars').innerHTML = maintItems.map((d,i) => {
-      const pct   = (d.sub / maxVal) * 100;
-      const color = COLORS[i % COLORS.length];
-      const lbl   = d.label.length > 8 ? d.label.slice(0,7)+'…' : d.label;
-      return `<div class="bar-g">
-        <div class="bar" style="height:${Math.max(pct,3)}%;background:${color};opacity:0.75;border-radius:4px 4px 0 0;"
-             data-tip="${d.label}: ${fmt(d.sub)}"></div>
-        <div class="bar-lbl">${lbl}</div>
-      </div>`;
+    const maxV = Math.max(...maintItems.map(d=>d.sub),1);
+    document.getElementById('chart-bars').innerHTML = maintItems.map((d,i)=>{
+      const pct=d.sub/maxV*100, color=COLORS[i%COLORS.length], lbl=d.label.length>8?d.label.slice(0,7)+'…':d.label;
+      return `<div class="bar-g"><div class="bar" style="height:${Math.max(pct,3)}%;background:${color};opacity:0.8;border-radius:4px 4px 0 0;" data-tip="${d.label}: ${fmt(d.sub)}"></div><div class="bar-lbl">${lbl}</div></div>`;
     }).join('');
   } else {
-    document.getElementById('maint-thead').innerHTML = '<tr><th>No maintenance data found</th></tr>';
-    document.getElementById('maint-tbody').innerHTML = '';
-    document.getElementById('maint-tfoot').innerHTML = '';
-    document.getElementById('chart-bars').innerHTML  = '<div style="color:var(--muted);padding:20px;font-size:13px">No data</div>';
+    document.getElementById('maint-thead').innerHTML='<tr><th>No maintenance data found</th></tr>';
+    document.getElementById('maint-tbody').innerHTML='';
+    document.getElementById('maint-tfoot').innerHTML='';
+    document.getElementById('chart-bars').innerHTML='<div style="color:var(--muted);padding:20px">No data</div>';
   }
 
   // ── EXPENSE TABLE ─────────────────────────────────────────────────────────
   if (expHeaderRow >= 0) {
-    const expEnd = balHeaderRow > expHeaderRow ? balHeaderRow : allRows.length;
+    const expEnd     = balHeaderRow > expHeaderRow ? balHeaderRow : allRows.length;
     const expHeaders = allRows[expHeaderRow];
-    const expRows = allRows.slice(expHeaderRow + 1, expEnd).filter(r => r.some(c => c.trim() !== ''));
-
-    // Find column indices for Expense name, Expense Amount, Remarks
-    let expNameIdx = 0, expAmtIdx = -1, expRemIdx = -1;
-    expHeaders.forEach((h, i) => {
-      const hn = norm(h);
-      if (hn.includes('expense amount') || hn.includes('amount')) expAmtIdx = i;
-      else if (hn.includes('remark')) expRemIdx = i;
+    const expRows    = allRows.slice(expHeaderRow+1, expEnd).filter(r=>r.some(c=>c.trim()!==''));
+    let expAmtIdx=-1, expRemIdx=-1;
+    expHeaders.forEach((h,i)=>{
+      const hn=norm(h);
+      if (hn.includes('expense amount')||hn.includes('amount')) expAmtIdx=i;
+      else if (DOP_PATTERNS.some(p=>hn.includes(p))) return; // skip DOP
+      else if (hn.includes('remark')) expRemIdx=i;
     });
-
-    const expItems = expRows.map(row => {
-      const name   = (row[expNameIdx] || '').trim();
-      if (!name || norm(name) === 'expense') return null; // skip sub-header rows
-      const amt    = expAmtIdx >= 0 ? parseAmt(row[expAmtIdx] || '') : 0;
-      const remark = expRemIdx >= 0 ? (row[expRemIdx] || '').trim() : '';
-      return { name, amt, remark };
+    const expItems = expRows.map(row=>{
+      const name=(row[0]||'').trim();
+      if (!name||norm(name)==='expense') return null;
+      return { name, amt:expAmtIdx>=0?parseAmt(row[expAmtIdx]||''):0, remark:expRemIdx>=0?(row[expRemIdx]||'').trim():'' };
     }).filter(Boolean);
+    const totalExp=expItems.reduce((a,e)=>a+e.amt,0);
 
-    const totalExp = expItems.reduce((a,e) => a+e.amt, 0);
-
-    document.getElementById('exp-thead').innerHTML = `<tr>
-      <th>Expense</th>
-      <th>Amount</th>
-      ${expRemIdx >= 0 ? '<th>Remarks</th>' : ''}
-    </tr>`;
-
-    document.getElementById('exp-tbody').innerHTML = expItems.map(e => `
-      <tr>
-        <td class="td-label">${e.name}</td>
-        <td class="td-total2">${fmt(e.amt)}</td>
-        ${expRemIdx >= 0 ? `<td class="td-remark">${e.remark}</td>` : ''}
-      </tr>
-    `).join('');
-
-    document.getElementById('exp-tfoot').innerHTML = `
-      <tr>
-        <td>Total Expenses</td>
-        <td>${fmt(totalExp)}</td>
-        ${expRemIdx >= 0 ? '<td></td>' : ''}
-      </tr>`;
+    document.getElementById('exp-thead').innerHTML=`<tr><th>Expense</th><th>Amount</th>${expRemIdx>=0?'<th>Remarks</th>':''}</tr>`;
+    document.getElementById('exp-tbody').innerHTML=expItems.map(e=>`<tr><td class="td-label">${e.name}</td><td class="td-total2">${fmt(e.amt)}</td>${expRemIdx>=0?`<td class="td-remark">${e.remark}</td>`:''}</tr>`).join('');
+    document.getElementById('exp-tfoot').innerHTML=`<tr><td>Total Expenses</td><td>${fmt(totalExp)}</td>${expRemIdx>=0?'<td></td>':''}</tr>`;
   } else {
-    document.getElementById('exp-thead').innerHTML = '<tr><th>No expense data found</th></tr>';
-    document.getElementById('exp-tbody').innerHTML = `<tr><td style="color:var(--muted);padding:20px;font-size:13px">
-      Add an "Expense Amount" column header in your sheet to see this table.</td></tr>`;
-    document.getElementById('exp-tfoot').innerHTML = '';
+    document.getElementById('exp-thead').innerHTML='<tr><th>No expense data</th></tr>';
+    document.getElementById('exp-tbody').innerHTML='<tr><td style="color:var(--muted);padding:20px">Add "Expense Amount" column header in sheet</td></tr>';
+    document.getElementById('exp-tfoot').innerHTML='';
   }
 
-  // ── OPENING / CLOSING BALANCE CARDS ──────────────────────────────────────
-  let openingBal = null, closingBal = null;
-
-  if (balHeaderRow >= 0) {
-    const balHeaders = allRows[balHeaderRow];
-    let openIdx = -1, closeIdx = -1;
-    balHeaders.forEach((h, i) => {
-      const hn = norm(h);
-      if (hn.includes('opening balance')) openIdx = i;
-      if (hn.includes('closing balance')) closeIdx = i;
-    });
-
-    // Scan the balance rows for actual values
-    for (let i = balHeaderRow + 1; i < allRows.length; i++) {
-      const row = allRows[i];
-      if (openIdx >= 0 && openingBal === null) {
-        const v = parseAmt(row[openIdx] || '');
-        if (v) openingBal = v;
-      }
-      if (closeIdx >= 0 && closingBal === null) {
-        const v = parseAmt(row[closeIdx] || '');
-        if (v) closingBal = v;
-      }
-      if (openingBal !== null && closingBal !== null) break;
+  // ── BALANCES ──────────────────────────────────────────────────────────────
+  let openingBal=null, closingBal=null;
+  if (balHeaderRow>=0) {
+    const bh=allRows[balHeaderRow]; let oi=-1,ci=-1;
+    bh.forEach((h,i)=>{ const n=norm(h); if(n.includes('opening balance'))oi=i; if(n.includes('closing balance'))ci=i; });
+    for(let i=balHeaderRow+1;i<allRows.length;i++){
+      const row=allRows[i];
+      if(oi>=0&&openingBal===null){const v=parseAmt(row[oi]||'');if(v)openingBal=v;}
+      if(ci>=0&&closingBal===null){const v=parseAmt(row[ci]||'');if(v)closingBal=v;}
+      if(openingBal!==null&&closingBal!==null)break;
     }
   }
-
-  // If balance columns not in a separate table, try scanning all rows
-  if (openingBal === null || closingBal === null) {
-    allRows.forEach(row => {
-      row.forEach((cell, i) => {
-        if (norm(cell).includes('opening balance') && i + 1 < row.length) {
-          const v = parseAmt(row[i+1] || '');
-          if (v && openingBal === null) openingBal = v;
-        }
-        if (norm(cell).includes('closing balance') && i + 1 < row.length) {
-          const v = parseAmt(row[i+1] || '');
-          if (v && closingBal === null) closingBal = v;
-        }
-      });
-    });
+  if(openingBal===null||closingBal===null){
+    allRows.forEach(row=>row.forEach((cell,i)=>{
+      if(norm(cell).includes('opening balance')&&i+1<row.length){const v=parseAmt(row[i+1]||'');if(v&&openingBal===null)openingBal=v;}
+      if(norm(cell).includes('closing balance')&&i+1<row.length){const v=parseAmt(row[i+1]||'');if(v&&closingBal===null)closingBal=v;}
+    }));
   }
 
-  document.getElementById('balance-cards').innerHTML = `
+  document.getElementById('balance-cards').innerHTML=`
     <div class="bal-card" style="--card-color:#6be8a7">
       <div class="bal-label">Opening Balance</div>
-      <div class="bal-value" style="color:#6be8a7">${openingBal !== null ? fmt(openingBal) : '—'}</div>
+      <div class="bal-value" style="color:#6be8a7">${openingBal!==null?fmt(openingBal):'—'}</div>
       <div class="bal-sub">${month.short}</div>
     </div>
     <div class="bal-card" style="--card-color:#e8c96b">
       <div class="bal-label">Closing Balance</div>
-      <div class="bal-value" style="color:#e8c96b">${closingBal !== null ? fmt(closingBal) : '—'}</div>
+      <div class="bal-value" style="color:#e8c96b">${closingBal!==null?fmt(closingBal):'—'}</div>
       <div class="bal-sub">${month.short}</div>
     </div>`;
 
-  // Timestamp
-  const now = new Date();
-  const ds  = now.toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' });
-  document.getElementById('last-updated').textContent = `Last loaded ${ds} · ${month.label}`;
-  document.getElementById('footer-date').textContent  = ds;
+  const ds=new Date().toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'});
+  document.getElementById('last-updated').textContent=`Last loaded ${ds} · ${month.label}`;
+  document.getElementById('footer-date').textContent=ds;
 }
 
-// ── FETCH ─────────────────────────────────────────────────────────────────────
 async function loadMonth(idx) {
-  const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=${MONTHS[idx].gid}`;
-  const loading = (id, cols=10) => {
-    const el = document.getElementById(id);
-    if (el) el.innerHTML = `<tr><td colspan="${cols}" class="loader"><div class="spinner"></div></td></tr>`;
-  };
-  document.getElementById('balance-cards').innerHTML = '<div class="loader" style="grid-column:1/-1"><div class="spinner"></div>Fetching data…</div>';
-  loading('maint-tbody', 10);
-  loading('exp-tbody', 3);
-
+  const url=`https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=${MONTHS[idx].gid}`;
+  document.getElementById('balance-cards').innerHTML='<div class="loader" style="grid-column:1/-1"><div class="spinner"></div>Fetching data…</div>';
+  ['maint-tbody','exp-tbody'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML=`<tr><td colspan="10" class="loader"><div class="spinner"></div></td></tr>`;});
   try {
-    const res = await fetch(url);
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    const text = await res.text();
-    render(parseCSV(text), idx);
+    const res=await fetch(url);
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    render(parseCSV(await res.text()), idx);
   } catch(err) {
     console.error(err);
-    document.getElementById('balance-cards').innerHTML = `
+    document.getElementById('balance-cards').innerHTML=`
       <div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted)">
         <div style="font-size:36px;margin-bottom:12px">🔒</div>
-        <div style="font-size:16px;margin-bottom:8px;color:var(--text)">Sheet not publicly accessible</div>
-        <div style="font-size:13px;margin-bottom:20px">Go to Google Sheets → Share → Anyone with link → Viewer</div>
-        <a href="https://docs.google.com/spreadsheets/d/${SHEET_ID}/edit?usp=sharing"
-           target="_blank" class="btn btn-p" style="display:inline-flex;margin:0 auto">
-          Open Sheet →
-        </a>
+        <div style="font-size:16px;margin-bottom:8px;color:var(--text)">Could not load sheet data</div>
+        <div style="font-size:13px;margin-bottom:20px">Share → Anyone with link → Viewer</div>
+        <a href="https://docs.google.com/spreadsheets/d/${SHEET_ID}/edit?usp=sharing" target="_blank" class="btn btn-p" style="display:inline-flex;margin:0 auto">Open Sheet →</a>
       </div>`;
-    ['maint-tbody','exp-tbody','chart-bars'].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.innerHTML = '';
-    });
   }
 }
 
-function switchMonth() {
-  loadMonth(parseInt(document.getElementById('month-select').value, 10));
-}
+function switchMonth(){loadMonth(parseInt(document.getElementById('month-select').value,10));}
 
-// ── BOOT ──────────────────────────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', () => {
-  const sel = document.getElementById('month-select');
-  sel.innerHTML = MONTHS.map((m,i) => `<option value="${i}">${m.label}</option>`).join('');
+document.addEventListener('DOMContentLoaded',()=>{
+  const sel=document.getElementById('month-select');
+  sel.innerHTML=MONTHS.map((m,i)=>`<option value="${i}">${m.label}</option>`).join('');
   loadMonth(0);
 });
 </script>
+
 </body>
 </html>
