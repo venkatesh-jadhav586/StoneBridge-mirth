@@ -303,9 +303,9 @@ function render(allRows, monthIdx) {
   const maintHeaders = allRows[maintHeaderRow];
   const maintRows = allRows.slice(maintHeaderRow + 1, maintEnd).filter(r => r.some(c => c.trim() !== ''));
 
-  // Find useful columns — skip columns that are empty, "d.o.p", "total", "opening/closing balance", "expense"
-  const skipPatterns = ['d.o.p','dop','opening balance','closing balance','expense amount'];
-  const remarkPatterns = ['remark','paid','status'];
+  // Find useful columns — skip d.o.p, column 8, opening/closing balance, expense amount
+  const skipPatterns = ['d.o.p','dop','opening balance','closing balance','expense amount','column 8','column8'];
+  const remarkPatterns = ['remark','status'];
   const maintCols = [];
   const remarkCols = [];
   let maintTotalIdx = -1;
@@ -315,9 +315,15 @@ function render(allRows, monthIdx) {
     if (i === 0) return;
     if (hn === '') return;
     if (skipPatterns.some(p => hn.includes(p))) return;
-    if (hn.includes('total') || hn.includes('sum')) { maintTotalIdx = i; return; }
+    if (hn.includes('total') || hn.includes('sum') || hn.includes('paid')) { maintTotalIdx = i; return; }
     if (remarkPatterns.some(p => hn.includes(p))) { remarkCols.push({ idx: i, name: h }); return; }
     maintCols.push({ idx: i, name: h });
+  });
+
+  // Find remarks column index separately for pending check
+  let remarksColIdx = -1;
+  maintHeaders.forEach((h, i) => {
+    if (norm(h).includes('remark')) remarksColIdx = i;
   });
 
   const maintItems = maintRows.map(row => {
@@ -325,8 +331,12 @@ function render(allRows, monthIdx) {
     if (!label) return null;
     const amts    = maintCols.map(c => ({ name: c.name, amt: parseAmt(row[c.idx] || '') }));
     const remarks = remarkCols.map(c => ({ name: c.name, val: (row[c.idx] || '').trim() }));
-    const sub     = maintTotalIdx >= 0 ? parseAmt(row[maintTotalIdx] || '') : amts.reduce((a,e) => a+e.amt, 0);
-    return { label, amts, remarks, sub };
+    const remarkVal = remarksColIdx >= 0 ? norm(row[remarksColIdx] || '') : '';
+    const isPending = remarkVal.includes('pend');
+    // sub = total from sheet col if exists; if pending, sub = 0 (don't count)
+    const rawSub = maintTotalIdx >= 0 ? parseAmt(row[maintTotalIdx] || '') : amts.reduce((a,e) => a+e.amt, 0);
+    const sub = isPending ? 0 : rawSub;
+    return { label, amts, remarks, sub, isPending, rawSub };
   }).filter(Boolean);
 
   if (maintItems.length) {
@@ -338,19 +348,21 @@ function render(allRows, monthIdx) {
     </tr>`;
 
     document.getElementById('maint-tbody').innerHTML = maintItems.map(d => `
-      <tr>
+      <tr style="${d.isPending ? 'opacity:0.5' : ''}">
         <td class="td-label">${d.label}</td>
         ${d.amts.map(e => `<td class="td-num">${fmt(e.amt)}</td>`).join('')}
         ${d.remarks.map(r => `<td class="td-remark" style="color:${norm(r.val).includes('paid') ? 'var(--green)' : norm(r.val).includes('pend') ? '#e8976b' : 'var(--muted)'}">${r.val || '—'}</td>`).join('')}
-        <td class="td-total">${fmt(d.sub)}</td>
+        <td class="td-total" style="${d.isPending ? 'color:#e8976b' : ''}">${d.isPending ? '<span style="color:#e8976b;font-size:11px">PENDING</span>' : fmt(d.sub)}</td>
       </tr>
     `).join('');
 
-    const colTotals = maintCols.map(c => maintItems.reduce((a,d) => a + (d.amts.find(e=>e.name===c.name)?.amt||0), 0));
-    const grandMaint = maintItems.reduce((a,d) => a+d.sub, 0);
+    // Total Collected = only paid rows
+    const colTotals  = maintCols.map(c => maintItems.filter(d => !d.isPending).reduce((a,d) => a + (d.amts.find(e=>e.name===c.name)?.amt||0), 0));
+    const grandMaint = maintItems.filter(d => !d.isPending).reduce((a,d) => a+d.sub, 0);
+    const pendingCount = maintItems.filter(d => d.isPending).length;
     document.getElementById('maint-tfoot').innerHTML = `
       <tr>
-        <td>Total Collected</td>
+        <td>Total Collected${pendingCount > 0 ? ` <span style="color:#e8976b;font-weight:400;font-size:11px">(${pendingCount} pending excluded)</span>` : ''}</td>
         ${colTotals.map(t => `<td>${fmt(t)}</td>`).join('')}
         ${remarkCols.map(() => '<td></td>').join('')}
         <td>${fmt(grandMaint)}</td>
