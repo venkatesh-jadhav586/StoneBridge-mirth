@@ -315,7 +315,7 @@ function render(allRows, monthIdx) {
   let maintHeaderRow = -1, expHeaderRow = -1, balHeaderRow = -1;
   allRows.forEach((row, i) => {
     const j = row.map(norm).join('|');
-    if (maintHeaderRow < 0 && j.includes('maint') && j.includes('deposit')) maintHeaderRow = i;
+    if (maintHeaderRow < 0 && j.includes('maint')) maintHeaderRow = i;
     if (expHeaderRow   < 0 && j.includes('expense amount'))                  expHeaderRow   = i;
     if (balHeaderRow   < 0 && (j.includes('opening balance') || j.includes('closing balance'))) balHeaderRow = i;
   });
